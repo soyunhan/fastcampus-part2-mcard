@@ -13,6 +13,7 @@ import MyPage from '@pages/My'
 
 import PrivateRoute from '@components/auth/PrivateRoute'
 import Navbar from '@shared/Navbar'
+import { env } from 'process'
 
 function App() {
   return (
