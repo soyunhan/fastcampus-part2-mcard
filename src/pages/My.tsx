@@ -9,26 +9,28 @@ import Spacing from '@shared/Spacing'
 import useUser from '@hooks/auth/useUser'
 import { auth } from '@remote/firebase'
 import MyImage from '@components/my/MyImage'
-import PostCard from '@/components/card/Postcard_t'
+import PostCard from '@/components/card/Postcards/Postcard_t'
 import SelectBox from '@/components/card/SelectBox'
 import DateSelectBox from '@/components/card/SelectBox2'
-import TextInput from '@/components/card/TextInput'
-import TextareaInput from '@/components/card/TextareaInput'
+import TextInput from '@/components/card/Input/TextInput'
+import TextareaInput from '@/components/card/Input/TextareaInput'
 import VoteForm from '@/components/card/VoteForm'
 
 import styled from '@emotion/styled'
-import PostForm from '@/components/card/PostForm'
-import PollForm from '@/components/card/PollFormIndex'
-import PostWithPoll from '@/components/card/PostWithPoll'
+import PostForm from '@/components/card/postListDetail/PostForm'
+import PollForm from '@/components/card/Poll/PollFormIndex'
+import PostWithPoll from '@/components/card/postListDetail/PostWithPoll'
 import DdayBanner from '@/components/card/DdayBanner'
 import GuideSection from '@/components/card/GuideSection'
 import ConciergeIndex from '@/components/card/Concierge/ConciergeIndex'
 import StaffMainPage from '@/components/card/Staff/StaffIndex'
 import Accordion from '@/components/card/Accordion/AccordionIndex'
 import HelpVideoPage from '@/components/card/ListVideo/HelpVideoPage'
+import PostWithFiles from '@/components/card/Postcards/PostWithFiles'
+import PollResult from '@/components/card/Poll/PollBar'
 
 const FormWrapper = styled.div`
-  width: 100%;
+  /* width: 100%; */
   /* max-width: 400px;
   margin: 0 auto; */
 `
@@ -125,7 +127,6 @@ function MyPage() {
           winnerRank: '1위',
         }}
       />
-      {/* <CategorySelectBox /> */}
       <br />
       <TextInput label="제목" placeholder="제목을 입력해주세요" />
       <br />
@@ -139,6 +140,10 @@ function MyPage() {
       <PostForm />
       <br />
       <PollForm />
+      <br />
+      <PostWithFiles />
+      <br />
+      <PollResult />
       <br />
       <PostWithPoll />
       <br />

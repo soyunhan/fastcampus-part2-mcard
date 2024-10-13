@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import PostHeader from './PostHeader'
 import PostImage from './PostImage'
-import PollComponent from './PollComponent'
+import PollComponent from '../Poll/PollComponent'
 
 const PostWithPoll = () => {
   const postTitle = '외국인 생활금융 플랫폼 커뮤니티 제목 두줄일경우'

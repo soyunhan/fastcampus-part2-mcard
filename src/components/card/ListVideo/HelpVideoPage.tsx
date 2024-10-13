@@ -1,11 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
-import VideoList from './VideoList' // VideoList는 이미 정의된 대로 사용 가능
+import VideoList from './VideoList' // VideoList component, already defined
+import LoadMoreButton from './LoadMoreButton'
 
 const Wrapper = styled.div`
+  width: 100%;
   padding: 20px;
-  max-width: 600px;
   margin: 0 auto;
 `
 
@@ -26,28 +27,56 @@ const HelpVideoPage: React.FC = () => {
     {
       title: 'Up to 2 lines of service will be displayed in the post...',
       date: '2024.09.02',
-      thumbnail: '', // 썸네일이 없을 경우 가상 이미지 사용
+      thumbnail: '', // No thumbnail, use placeholder
       duration: '',
     },
     {
       title: 'Up to 2 lines of service will be displayed in the post...',
       date: '2024.09.02',
-      thumbnail: 'https://via.placeholder.com/80', // 실제 이미지 URL
+      thumbnail: 'https://via.placeholder.com/80', // Actual thumbnail URL
       duration: '16:00',
     },
     {
       title: 'Up to 2 lines of service will be displayed in the post...',
       date: '2024.09.02',
-      thumbnail: '', // 썸네일이 없을 경우 가상 이미지 사용
+      thumbnail: '', // No thumbnail, use placeholder
       duration: '23:00',
     },
   ])
+  const [loadingMore, setLoadingMore] = useState(false)
+
+  const loadMoreVideos = () => {
+    setLoadingMore(true)
+    // Simulate fetching new videos (could be an API call)
+    setTimeout(() => {
+      const newVideos = [
+        {
+          title: 'New video added from load more...',
+          date: '2024.10.01',
+          thumbnail: 'https://via.placeholder.com/80',
+          duration: '10:00',
+        },
+        {
+          title: 'Another new video...',
+          date: '2024.10.02',
+          thumbnail: '',
+          duration: '12:00',
+        },
+      ]
+      setVideos((prevVideos) => [...prevVideos, ...newVideos])
+      setLoadingMore(false)
+    }, 1000) // Simulate network delay
+  }
 
   return (
     <Wrapper>
       <Header>Help Video</Header>
       <ResultCount>{videos.length}건의 결과</ResultCount>
-      <VideoList videos={videos} /> {/* VideoList는 VideoItem을 받음 */}
+      <VideoList videos={videos} />{' '}
+      {/* VideoList component to display videos */}
+      {!loadingMore && <LoadMoreButton onClick={loadMoreVideos} />}
+      {loadingMore && <div>Loading more videos...</div>}{' '}
+      {/* Optional loading indicator */}
     </Wrapper>
   )
 }

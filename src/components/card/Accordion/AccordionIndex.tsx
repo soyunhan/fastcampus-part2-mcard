@@ -10,11 +10,9 @@ interface AccordionItemProps {
 
 const AccordionWrapper = styled.div`
   width: 100%;
-  max-width: 600px;
   margin: 0 auto;
   background-color: #ffffff;
-  border: 1px solid #e1e8ed;
-  border-radius: 8px;
+  border-bottom: 1px solid #e1e8ed;
   overflow: hidden;
 `
 

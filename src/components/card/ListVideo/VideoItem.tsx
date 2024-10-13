@@ -31,7 +31,6 @@ const VideoTitle = styled.h3`
   max-height: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 `
 
 const VideoDate = styled.span`

@@ -2,8 +2,8 @@
 import styled from '@emotion/styled'
 import { useState } from 'react'
 import PollItem from './PollItem'
-import AddItemButton from './AddItemButton'
-import SubmitButton from './SubmitButton'
+import AddItemButton from '../AddItemButton'
+import SubmitButton from '../SubmitButton'
 
 const FormWrapper = styled.div`
   width: 100%;

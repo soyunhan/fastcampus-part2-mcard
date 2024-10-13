@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import React from 'react'
 import styled from '@emotion/styled'
 
 const BannerWrapper = styled.div`
@@ -19,6 +20,7 @@ const IconWrapper = styled.div`
   height: 60px;
   border-radius: 50%;
   margin-right: 15px;
+  position: relative; /* Allows Badge positioning */
 `
 
 const Badge = styled.div`
@@ -37,6 +39,20 @@ const Badge = styled.div`
 const Icon = styled.img`
   width: 36px;
   height: 36px;
+  border-radius: 50%;
+`
+
+const PlaceholderIcon = styled.div`
+  width: 36px;
+  height: 36px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
 `
 
 const ContentWrapper = styled.div`
@@ -56,15 +72,17 @@ const Date = styled.span`
   color: #99a1b3;
 `
 
-const DdayBanner = () => {
+const DdayBanner = ({ imageSrc }: { imageSrc?: string }) => {
   return (
     <BannerWrapper>
-      <div style={{ position: 'relative' }}>
-        <IconWrapper>
-          <Icon src="/path/to/coin-icon.png" alt="Coin Icon" />
-        </IconWrapper>
+      <IconWrapper>
+        {imageSrc ? (
+          <Icon src={imageSrc} alt="Icon" />
+        ) : (
+          <PlaceholderIcon>JB</PlaceholderIcon> // Default placeholder with initials
+        )}
         <Badge>D-2</Badge>
-      </div>
+      </IconWrapper>
       <ContentWrapper>
         <Title>JB와 함께하는 진심케어 이벤트</Title>
         <Date>2024.10.01 ~ 10.31</Date>
