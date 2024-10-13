@@ -18,6 +18,7 @@ interface Staff {
 }
 
 const MainWrapper = styled.div`
+  width: 100%;
   background-color: #f7f9fc;
   min-height: 100vh;
   display: flex;
@@ -88,11 +89,11 @@ const StaffMainPage: React.FC = () => {
               customerCenter={''}
               facebook={''}
             />
-            <SocialLinks
+            {/* <SocialLinks
               facebook={staff.facebook}
               instagram={staff.instagram}
               telegram={staff.telegram}
-            />
+            /> */}
             {index < staffData.length - 1 && <Divider />}
           </div>
         ))}

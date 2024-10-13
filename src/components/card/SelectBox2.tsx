@@ -6,7 +6,7 @@ import { useRef } from 'react'
 const SelectWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 200px; /* 너비 조정 */
+  width: 100%;
 `
 
 const Label = styled.label`

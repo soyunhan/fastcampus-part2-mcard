@@ -7,7 +7,7 @@ const PollWrapper = styled.div`
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  width: 100%;
   border: 1px solid #e1e8ed;
 `
 

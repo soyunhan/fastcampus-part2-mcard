@@ -9,8 +9,9 @@ import FooterButton from './FooterButton'
 import styled from '@emotion/styled'
 
 const MainWrapper = styled.div`
+  width: 100%;
   background-color: #f7f9fc;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
 `

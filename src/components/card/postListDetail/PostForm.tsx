@@ -133,43 +133,41 @@ function PostForm() {
   }
 
   return (
-    <div>
-      <FormWrapper>
-        <Title>게시글 등록</Title>
-        <Input
-          type="text"
-          placeholder="제목을 입력해 주세요."
-          value={title}
-          onChange={handleTitleChange}
-        />
-        {/* 이미지가 업로드된 경우 텍스트 영역을 숨기고 이미지를 표시 */}
-        <ContentWrapper>
-          {image ? (
-            <PreviewImage src={image} alt="Uploaded Image" />
-          ) : (
-            <Textarea
-              placeholder="내용을 입력해 주세요"
-              value={content}
-              onChange={handleContentChange}
-            />
-          )}
-        </ContentWrapper>
-
-        <ImageUploadWrapper>
-          <label htmlFor="image-upload">
-            <ImageIcon />
-          </label>
-          <input
-            id="image-upload"
-            type="file"
-            style={{ display: 'none' }}
-            onChange={handleImageChange}
+    <FormWrapper>
+      <Title>게시글 등록</Title>
+      <Input
+        type="text"
+        placeholder="제목을 입력해 주세요."
+        value={title}
+        onChange={handleTitleChange}
+      />
+      {/* 이미지가 업로드된 경우 텍스트 영역을 숨기고 이미지를 표시 */}
+      <ContentWrapper>
+        {image ? (
+          <PreviewImage src={image} alt="Uploaded Image" />
+        ) : (
+          <Textarea
+            placeholder="내용을 입력해 주세요"
+            value={content}
+            onChange={handleContentChange}
           />
-          <CharacterCount>{content.length}/100자</CharacterCount>
-        </ImageUploadWrapper>
+        )}
+      </ContentWrapper>
 
-        <Button onClick={handleSubmit}>게시물 등록</Button>
-      </FormWrapper>
+      <ImageUploadWrapper>
+        <label htmlFor="image-upload">
+          <ImageIcon />
+        </label>
+        <input
+          id="image-upload"
+          type="file"
+          style={{ display: 'none' }}
+          onChange={handleImageChange}
+        />
+        <CharacterCount>{content.length}/100자</CharacterCount>
+      </ImageUploadWrapper>
+
+      <Button onClick={handleSubmit}>게시물 등록</Button>
 
       {/* 등록된 게시물들을 렌더링 */}
       {posts.map((post, index) => (
@@ -179,7 +177,7 @@ function PostForm() {
           {post.image && <img src={post.image} alt="게시물 이미지" />}
         </div>
       ))}
-    </div>
+    </FormWrapper>
   )
 }
 

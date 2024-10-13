@@ -12,9 +12,6 @@ import MyImage from '@components/my/MyImage'
 import PostCard from '@/components/card/Postcards/Postcard_t'
 import SelectBox from '@/components/card/SelectBox'
 import DateSelectBox from '@/components/card/SelectBox2'
-import TextInput from '@/components/card/Input/TextInput'
-import TextareaInput from '@/components/card/Input/TextareaInput'
-import VoteForm from '@/components/card/VoteForm'
 
 import styled from '@emotion/styled'
 import PostForm from '@/components/card/postListDetail/PostForm'
@@ -33,18 +30,6 @@ const FormWrapper = styled.div`
   /* width: 100%; */
   /* max-width: 400px;
   margin: 0 auto; */
-`
-
-const SubmitButton = styled.button`
-  width: 100%;
-  padding: 15px;
-  background-color: #007bff;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
 `
 
 function MyPage() {
@@ -78,10 +63,6 @@ function MyPage() {
 
       <hr />
       {/* test */}
-      <SelectBox />
-      <br />
-      <DateSelectBox />
-      <br />
       <PostCard
         profileImage="/path-to-image/profile.png"
         username="Sonnyis GOD"
@@ -128,13 +109,9 @@ function MyPage() {
         }}
       />
       <br />
-      <TextInput label="제목" placeholder="제목을 입력해주세요" />
+      <SelectBox />
       <br />
-      <TextareaInput label="내용" placeholder="내용을 입력해주세요" />
-      <br />
-      <VoteForm />
-      <br />
-      <SubmitButton>게시물 등록</SubmitButton>
+      <DateSelectBox />
       <br />
       {/* test */}
       <PostForm />

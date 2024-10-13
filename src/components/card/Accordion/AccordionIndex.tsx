@@ -3,11 +3,13 @@ import { useState } from 'react'
 import styled from '@emotion/styled'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
+// Define the type for the props
 interface AccordionItemProps {
   title: string
   content: string
 }
 
+// Accordion Wrapper
 const AccordionWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -16,6 +18,7 @@ const AccordionWrapper = styled.div`
   overflow: hidden;
 `
 
+// Accordion Item Wrapper
 const AccordionItemWrapper = styled.div`
   border-bottom: 1px solid #e1e8ed;
   &:last-child {
@@ -23,6 +26,7 @@ const AccordionItemWrapper = styled.div`
   }
 `
 
+// Accordion Header
 const AccordionHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -32,11 +36,12 @@ const AccordionHeader = styled.div`
   background-color: #ffffff;
   transition: background-color 0.3s ease;
 
-  &:hover {
+  /* &:hover {
     background-color: #f7f9fc;
-  }
+  } */
 `
 
+// Accordion Title
 const AccordionTitle = styled.h3`
   font-size: 16px;
   font-weight: bold;
@@ -44,11 +49,13 @@ const AccordionTitle = styled.h3`
   color: #333;
 `
 
+// Accordion Icon
 const AccordionIcon = styled.div`
   font-size: 12px;
   color: #333;
 `
 
+// Accordion Content
 const AccordionContent = styled.div<{ isOpen: boolean }>`
   padding: 16px;
   font-size: 14px;
@@ -58,6 +65,7 @@ const AccordionContent = styled.div<{ isOpen: boolean }>`
   transition: max-height 0.3s ease;
 `
 
+// Accordion Item Component with props typed
 const AccordionItem: React.FC<AccordionItemProps> = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -80,7 +88,8 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ title, content }) => {
   )
 }
 
-const Accordion: React.FC = () => {
+// Main Accordion Component
+const Accordion = () => {
   return (
     <AccordionWrapper>
       <AccordionItem

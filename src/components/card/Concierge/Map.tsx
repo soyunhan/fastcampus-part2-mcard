@@ -2,8 +2,8 @@
 import styled from '@emotion/styled'
 
 const MapWrapper = styled.div`
-  background-color: #f7f9fc;
-  border-radius: 12px;
+  background-color: #ccc;
+  border-radius: 2px;
   overflow: hidden;
   margin: 16px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);

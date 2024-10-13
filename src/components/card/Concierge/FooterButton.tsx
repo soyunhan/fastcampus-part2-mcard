@@ -2,12 +2,12 @@
 import styled from '@emotion/styled'
 
 const ButtonWrapper = styled.div`
-  padding: 20px;
   background-color: #fff;
   text-align: center;
 `
 
 const Button = styled.button`
+  width: 100%;
   padding: 12px 24px;
   background-color: transparent;
   border: 1px solid #007bff;

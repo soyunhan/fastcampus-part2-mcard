@@ -3,6 +3,7 @@ import React from 'react'
 import styled from '@emotion/styled'
 
 const BannerWrapper = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: #f7f9fc;
