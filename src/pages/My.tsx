@@ -21,6 +21,11 @@ import PostForm from '@/components/card/PostForm'
 import PollForm from '@/components/card/PollFormIndex'
 import PostWithPoll from '@/components/card/PostWithPoll'
 import DdayBanner from '@/components/card/DdayBanner'
+import GuideSection from '@/components/card/GuideSection'
+import ConciergeIndex from '@/components/card/Concierge/ConciergeIndex'
+import StaffMainPage from '@/components/card/Staff/StaffIndex'
+import Accordion from '@/components/card/Accordion/AccordionIndex'
+import HelpVideoPage from '@/components/card/ListVideo/HelpVideoPage'
 
 const FormWrapper = styled.div`
   width: 100%;
@@ -49,6 +54,17 @@ function MyPage() {
 
   return (
     <Flex direction="column" align="center">
+      {/* test */}
+      <HelpVideoPage />
+      <br />
+      <Accordion />
+      <br />
+      <ConciergeIndex />
+      <br />
+      <StaffMainPage />
+      <br />
+      {/* test */}
+
       <Spacing size={40} />
       <MyImage size={80} mode="upload" />
 
@@ -58,9 +74,23 @@ function MyPage() {
       <Spacing size={20} />
       <Button onClick={handleLogout}>로그아웃</Button>
 
+      <hr />
       {/* test */}
       <SelectBox />
+      <br />
       <DateSelectBox />
+      <br />
+      <PostCard
+        profileImage="/path-to-image/profile.png"
+        username="Sonnyis GOD"
+        date="2024.08.28"
+        image=""
+        content="지난 분기 좋은 실적으로 주목받는 글로벌 OTT 넷플릭스 가입자 수는 몇 명일까요?"
+        stats={['👁 3.6k', '❤️ 2.4k', '💬 610']}
+        isReported={false}
+        bannerText=""
+      />
+      <br />
       <PostCard
         profileImage="/path-to-image/profile.png"
         username="Sonnyis GOD"
@@ -82,7 +112,6 @@ function MyPage() {
           participants: 7489,
         }}
       />
-
       <PostCard
         profileImage="/path-to-image/profile.png"
         username="Sonnyis GOD"
@@ -97,15 +126,25 @@ function MyPage() {
         }}
       />
       {/* <CategorySelectBox /> */}
+      <br />
       <TextInput label="제목" placeholder="제목을 입력해주세요" />
+      <br />
       <TextareaInput label="내용" placeholder="내용을 입력해주세요" />
+      <br />
       <VoteForm />
+      <br />
       <SubmitButton>게시물 등록</SubmitButton>
+      <br />
       {/* test */}
       <PostForm />
+      <br />
       <PollForm />
+      <br />
       <PostWithPoll />
+      <br />
       <DdayBanner />
+      <br />
+      <GuideSection />
     </Flex>
   )
 }
