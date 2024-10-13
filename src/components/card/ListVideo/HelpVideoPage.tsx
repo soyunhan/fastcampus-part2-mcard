@@ -5,8 +5,8 @@ import VideoList from './VideoList' // VideoList component, already defined
 import LoadMoreButton from './LoadMoreButton'
 
 const Wrapper = styled.div`
-  /* width: 100%;
-  padding: 20px;
+  width: 100%;
+  /* padding: 20px;
   margin: 0 auto; */
 `
 
