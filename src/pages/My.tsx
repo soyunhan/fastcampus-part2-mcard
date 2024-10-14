@@ -32,6 +32,19 @@ const FormWrapper = styled.div`
   margin: 0 auto; */
 `
 
+const postTitle = '외국인 생활금융 플랫폼 커뮤니티 제목'
+const postContent = [
+  "전북은행 외국인 생활금융 플랫폼 Jeonbuk Bank's Foreign Living Finance Platform 커뮤니티 내용입니다. 내용 가득",
+  "전북은행 외국인 생활금융 플랫폼 Jeonbuk Bank's Foreign Living Finance Platform 커뮤니티 내용입니다. 내용 가득",
+]
+const postFiles = [
+  {
+    fileName: '파일 이름 파일 이름 파일 이름 파일 이름.jpg',
+    fileType: 'image' as 'image',
+  },
+  { fileName: '파일 이름 파일 이름.pdf', fileType: 'pdf' as 'pdf' },
+]
+
 function MyPage() {
   const user = useUser()
 
@@ -50,19 +63,29 @@ function MyPage() {
       <br />
       <StaffMainPage />
       <br />
+      <SelectBox />
+      <br />
+      <DateSelectBox />
+      <br />
       {/* test */}
-
-      <Spacing size={40} />
-      <MyImage size={80} mode="upload" />
-
-      <Spacing size={20} />
-      <Text bold={true}>{user?.displayName}</Text>
-
-      <Spacing size={20} />
-      <Button onClick={handleLogout}>로그아웃</Button>
-
-      <hr />
-      {/* test */}
+      <PostForm />
+      <br />
+      <PollForm />
+      <br />
+      <PostWithFiles
+        title={postTitle}
+        content={postContent}
+        files={postFiles}
+      />
+      <br />
+      <PollResult />
+      <br />
+      <PostWithPoll />
+      <br />
+      <DdayBanner />
+      <br />
+      <GuideSection />
+      <br />
       <PostCard
         profileImage="/path-to-image/profile.png"
         username="Sonnyis GOD"
@@ -73,7 +96,6 @@ function MyPage() {
         isReported={false}
         bannerText=""
       />
-      <br />
       <PostCard
         profileImage="/path-to-image/profile.png"
         username="Sonnyis GOD"
@@ -108,25 +130,16 @@ function MyPage() {
           winnerRank: '1위',
         }}
       />
-      <br />
-      <SelectBox />
-      <br />
-      <DateSelectBox />
-      <br />
       {/* test */}
-      <PostForm />
-      <br />
-      <PollForm />
-      <br />
-      <PostWithFiles />
-      <br />
-      <PollResult />
-      <br />
-      <PostWithPoll />
-      <br />
-      <DdayBanner />
-      <br />
-      <GuideSection />
+      <Spacing size={40} />
+      <MyImage size={80} mode="upload" />
+
+      <Spacing size={20} />
+      <Text bold={true}>{user?.displayName}</Text>
+
+      <Spacing size={20} />
+      <Button onClick={handleLogout}>로그아웃</Button>
+      {/* test */}
     </Flex>
   )
 }

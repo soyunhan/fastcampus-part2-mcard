@@ -24,6 +24,12 @@ const InfoText = styled.span`
   color: #333;
 `
 
+// interface ContactInfoProps {
+//   address: string;
+//   phone: string;
+//   fax: string;
+// }
+
 const ContactInfo = () => {
   return (
     <InfoWrapper>

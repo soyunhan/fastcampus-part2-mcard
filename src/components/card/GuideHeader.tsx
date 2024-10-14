@@ -27,12 +27,19 @@ const IconWrapper = styled.div`
   color: #007bff;
 `
 
-const GuideHeader = () => {
+// Define the prop type for conditional rendering
+interface GuideHeaderProps {
+  actionText?: string // This controls the visibility of the "참여방법" link
+  titleText: string
+}
+
+const GuideHeader: React.FC<GuideHeaderProps> = ({ actionText, titleText }) => {
   return (
     <HeaderWrapper>
       <div>
-        <ActionLink>참여방법</ActionLink>
-        <Title>공통 가이드</Title>
+        {/* Conditionally render the ActionLink */}
+        {actionText && <ActionLink>{actionText}</ActionLink>}
+        <Title>{titleText}</Title>
       </div>
       <IconWrapper>
         <FaSearch />

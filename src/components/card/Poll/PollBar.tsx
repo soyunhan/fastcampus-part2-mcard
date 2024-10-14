@@ -1,7 +1,7 @@
-/** @jsxImportSource @emotion/react */
 import React, { useState } from 'react'
 import styled from '@emotion/styled'
 
+// 스타일 정의는 동일
 const PollWrapper = styled.div`
   padding: 20px;
   background-color: #fff;
@@ -110,14 +110,59 @@ const PollButton = styled.button`
   font-weight: bold;
 `
 
-interface PollOption {
+// PollTitle 컴포넌트
+const PollHeader: React.FC<{ title: string; status: string }> = ({
+  title,
+  status,
+}) => (
+  <PollTitleWrapper>
+    <PollTitle>{title}</PollTitle>
+    <PollStatus>{status}</PollStatus>
+  </PollTitleWrapper>
+)
+
+// PollOption 컴포넌트
+interface PollOptionProps {
   option: string
   percentage: number
-  selected?: boolean
+  selected: boolean
 }
 
+const PollOption: React.FC<PollOptionProps> = ({
+  option,
+  percentage,
+  selected,
+}) => (
+  <PollOptionWrapper>
+    <PollBackgroundBar width={percentage} />
+    <PollOptionContent>
+      <PollTextWrapper>
+        <PollOptionText>{option}</PollOptionText>
+        <Checkmark isVisible={selected}>✔</Checkmark>
+      </PollTextWrapper>
+      <PollPercentageWrapper>
+        <PollPercentage>{percentage}%</PollPercentage>
+      </PollPercentageWrapper>
+    </PollOptionContent>
+  </PollOptionWrapper>
+)
+
+// PollFooter 컴포넌트
+const PollFooterComponent: React.FC<{
+  totalVotes: number
+  endDate: string
+}> = ({ totalVotes, endDate }) => (
+  <PollFooter>
+    <PollButton>다시 투표하기</PollButton>
+    <PollVotes>
+      {totalVotes}표 · {endDate} 까지
+    </PollVotes>
+  </PollFooter>
+)
+
+// PollResult 컴포넌트 (최종 조합)
 const PollResult: React.FC = () => {
-  const [pollOptions, setPollOptions] = useState<PollOption[]>([
+  const [pollOptions, setPollOptions] = useState<PollOptionProps[]>([
     { option: '투표항목 1', percentage: 0, selected: false },
     { option: '투표항목 2', percentage: 80, selected: true },
     { option: '투표항목 3', percentage: 0, selected: false },
@@ -126,28 +171,16 @@ const PollResult: React.FC = () => {
 
   return (
     <PollWrapper>
-      <PollTitleWrapper>
-        <PollTitle>투표 제목 투표 제목</PollTitle>
-        <PollStatus>진행중</PollStatus>
-      </PollTitleWrapper>
+      <PollHeader title="투표 제목 투표 제목" status="진행중" />
       {pollOptions.map((option, index) => (
-        <PollOptionWrapper key={index}>
-          <PollBackgroundBar width={option.percentage} />
-          <PollOptionContent>
-            <PollTextWrapper>
-              <PollOptionText>{option.option}</PollOptionText>
-              <Checkmark isVisible={option.selected || false}>✔</Checkmark>
-            </PollTextWrapper>
-            <PollPercentageWrapper>
-              <PollPercentage>{option.percentage}%</PollPercentage>
-            </PollPercentageWrapper>
-          </PollOptionContent>
-        </PollOptionWrapper>
+        <PollOption
+          key={index}
+          option={option.option}
+          percentage={option.percentage}
+          selected={option.selected}
+        />
       ))}
-      <PollFooter>
-        <PollButton>다시 투표하기</PollButton>
-        <PollVotes>5표 · 2024년 8월 29일 까지</PollVotes>
-      </PollFooter>
+      <PollFooterComponent totalVotes={5} endDate="2024년 8월 29일" />
     </PollWrapper>
   )
 }

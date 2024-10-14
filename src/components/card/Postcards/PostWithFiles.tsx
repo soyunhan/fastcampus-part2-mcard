@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import React from 'react'
 import styled from '@emotion/styled'
 import { FaFileImage, FaFilePdf } from 'react-icons/fa'
@@ -6,6 +5,12 @@ import { FaFileImage, FaFilePdf } from 'react-icons/fa'
 interface FileItemProps {
   fileName: string
   fileType: 'image' | 'pdf'
+}
+
+interface PostWithFilesProps {
+  title: string
+  content: string[]
+  files: FileItemProps[]
 }
 
 const PostWrapper = styled.div`
@@ -53,6 +58,7 @@ const FileName = styled.div`
   text-overflow: ellipsis;
 `
 
+// FileItem 컴포넌트
 const FileItem: React.FC<FileItemProps> = ({ fileName, fileType }) => {
   return (
     <FileItemWrapper>
@@ -68,26 +74,18 @@ const FileItem: React.FC<FileItemProps> = ({ fileName, fileType }) => {
   )
 }
 
-const PostWithFiles: React.FC = () => {
-  const files = [
-    {
-      fileName: '파일 이름 파일 이름 파일 이름 파일 이름.jpg',
-      fileType: 'image' as 'image',
-    },
-    { fileName: '파일 이름 파일 이름.pdf', fileType: 'pdf' as 'pdf' },
-  ]
-
+// PostWithFiles 컴포넌트
+const PostWithFiles: React.FC<PostWithFilesProps> = ({
+  title,
+  content,
+  files,
+}) => {
   return (
     <PostWrapper>
-      <Title>외국인 생활금융 플랫폼 커뮤니티 제목</Title>
-      <Content>
-        전북은행 외국인 생활금융 플랫폼 Jeonbuk Bank's Foreign Living Finance
-        Platform 커뮤니티 내용입니다. 내용 가득
-      </Content>
-      <Content>
-        전북은행 외국인 생활금융 플랫폼 Jeonbuk Bank's Foreign Living Finance
-        Platform 커뮤니티 내용입니다. 내용 가득
-      </Content>
+      <Title>{title}</Title>
+      {content.map((paragraph, index) => (
+        <Content key={index}>{paragraph}</Content>
+      ))}
       <FileListWrapper>
         {files.map((file, index) => (
           <FileItem

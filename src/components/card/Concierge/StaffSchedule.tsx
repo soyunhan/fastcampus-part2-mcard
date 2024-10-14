@@ -1,5 +1,9 @@
-/** @jsxImportSource @emotion/react */
+import React from 'react'
 import styled from '@emotion/styled'
+
+// 국가 코드와 해당하는 국기 URL을 만드는 함수
+const getFlagUrl = (countryCode: string) =>
+  `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`
 
 const ScheduleWrapper = styled.div`
   padding: 16px;
@@ -63,17 +67,18 @@ const DayCell = styled.td`
   vertical-align: middle;
 `
 
-const StaffSchedule = () => {
-  const scheduleData = {
-    월: ['🇦🇹', '🇳🇬', '🇹🇭', '🇫🇷', '🇺🇦'],
-    화: ['🇳🇬', '🇫🇷', '🇲🇳'],
-    수: ['🇵🇭', '🇨🇳', '🇺🇸'],
-    목: ['🇬🇷', '🇺🇦'],
-    금: ['🇮🇳', '🇿🇦'],
-    토: ['🇵🇭', '🇫🇷', '🇲🇳'],
-    일: ['🇯🇵', '🇲🇳'],
-  }
+// 국가 코드를 사용하는 스케줄 데이터
+const scheduleData = {
+  월: ['AT', 'NG', 'TH', 'FR', 'UA'],
+  화: ['NG', 'FR', 'MN'],
+  수: ['PH', 'CN', 'US'],
+  목: ['GR', 'UA'],
+  금: ['IN', 'ZA'],
+  토: ['PH', 'FR', 'MN'],
+  일: ['JP', 'MN'],
+}
 
+const StaffSchedule = () => {
   return (
     <ScheduleWrapper>
       <h3>요일별 근무 직원</h3>
@@ -85,16 +90,16 @@ const StaffSchedule = () => {
           </TableRow>
         </thead>
         <tbody>
-          {Object.entries(scheduleData).map(([day, flags]) => (
+          {Object.entries(scheduleData).map(([day, countryCodes]) => (
             <TableRow key={day}>
               <DayCell>{day}</DayCell>
               <TableCell>
                 <FlagWrapper>
-                  {flags.map((flag, index) => (
+                  {countryCodes.map((code, index) => (
                     <Flag
                       key={index}
-                      src={`https://flagcdn.com/w320/${flag}.png`}
-                      alt={`국기 ${flag}`}
+                      src={getFlagUrl(code)}
+                      alt={`국기 ${code}`}
                     />
                   ))}
                 </FlagWrapper>
