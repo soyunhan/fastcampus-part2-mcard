@@ -25,6 +25,7 @@ import Accordion from '@/components/card/Accordion/AccordionIndex'
 import HelpVideoPage from '@/components/card/ListVideo/HelpVideoPage'
 import PostWithFiles from '@/components/card/Postcards/PostWithFiles'
 import PollResult from '@/components/card/Poll/PollBar'
+import VotePoll from '@/components/card/VotePoll'
 
 const FormWrapper = styled.div`
   /* width: 100%; */
@@ -45,6 +46,17 @@ const postFiles = [
   { fileName: '파일 이름 파일 이름.pdf', fileType: 'pdf' as 'pdf' },
 ]
 
+const pollData = {
+  pollTitle: '당신의 선호하는 색상은 무엇인가요?',
+  options: [
+    { id: 1, name: '빨간색', votes: 10 },
+    { id: 2, name: '파란색', votes: 30 },
+    { id: 3, name: '노란색', votes: 20 },
+    { id: 4, name: '초록색', votes: 40 },
+  ],
+  deadline: '2024년 8월 29일',
+}
+
 function MyPage() {
   const user = useUser()
 
@@ -54,6 +66,11 @@ function MyPage() {
 
   return (
     <Flex direction="column" align="center">
+      <VotePoll
+        pollTitle={pollData.pollTitle}
+        options={pollData.options}
+        deadline={pollData.deadline}
+      />
       {/* test */}
       <HelpVideoPage />
       <br />
